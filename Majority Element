@@ -1,3 +1,27 @@
+Solve it by using two approaches:
+1.Hashmap:-------
+    def majorityElement(self, arr):
+        n = len(arr)
+        freq = {}  # dictionary to store element frequencies
+        
+        # count occurrences of each element
+        for num in arr:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+            
+            # check if current element became majority
+            if freq[num] > n // 2:
+                return num
+        
+        # if no majority element found
+        return -1
+->T.C:-O(n),S.C:-O(n)
+->Increases Space complexity
+
+
+2.Moore's Voting Algorithm:-----
 def majorityElement(self, arr):
         count = 0
         val = 0
@@ -15,3 +39,4 @@ def majorityElement(self, arr):
             return val
         else:
             return -1  # or whatever indicates no majority
+->T.C:-O(n),S.C:-O(1)
