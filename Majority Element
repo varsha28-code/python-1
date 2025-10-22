@@ -1,0 +1,17 @@
+def majorityElement(self, arr):
+        count = 0
+        val = 0
+        for num in arr:
+            if count == 0:
+                val = num
+                count = 1
+            elif num == val:
+                count += 1
+            else:
+                count -= 1
+        
+        # verification step
+        if arr.count(val) > len(arr)//2:
+            return val
+        else:
+            return -1  # or whatever indicates no majority
