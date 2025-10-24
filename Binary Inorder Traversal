@@ -1,0 +1,23 @@
+class Solution:
+    def inOrder(self, root):
+        # code here
+        res=[]
+        stack=[]
+        cur=root
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur=cur.left
+            cur=stack.pop()
+            res.append(cur.data)
+            cur=cur.right
+        return res
+        def inorder(root):
+            if not root:
+                return
+            inorder(root.left)
+            res.append(root.val)
+            inorder(root.right)
+        inorder(root)
+    
+        
