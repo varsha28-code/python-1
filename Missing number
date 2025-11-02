@@ -5,3 +5,4 @@ class Solution:
         array_sum = sum(arr)
         return total_sum - array_sum
 
+
