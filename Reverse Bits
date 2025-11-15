@@ -1,0 +1,19 @@
+class Solution(object):
+    def reverseBits(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        binary = "{:032b}".format(n)
+        reversed_binary = binary[::-1]
+        return int(reversed_binary, 2)
+
+Output:
+
+Example:
+Input: n = 43261596
+Output: 964176192
+Explanation:
+Integer	Binary
+43261596	00000010100101000001111010011100
+964176192	00111001011110000010100101000000
