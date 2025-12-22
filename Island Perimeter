@@ -1,0 +1,21 @@
+class Solution(object):
+    def islandPerimeter(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        row=len(grid)
+        col=len(grid[0])
+        lands=0
+        shared=0
+        for r in range(row):
+            for c in range(col):
+                if grid[r][c]==1:
+                    lands+=1
+                    if r<row-1 and grid[r+1][c]==1:
+                        shared+=1
+                    if c<col-1 and grid[r][c+1]==1:
+                        shared+=1
+        return (lands*4)-(shared*2)
+
+        
