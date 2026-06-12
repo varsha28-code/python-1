@@ -1,0 +1,41 @@
+import heapq
+
+def max_toys(a, t):
+    # heap stores (next_available_time, waiting_time)
+    heap = [(1, w) for w in a]
+    heapq.heapify(heap)
+
+    count = 0
+    curr_time = 1
+
+    while curr_time <= t:
+        avail = []
+
+        # Collect all toys available at current time
+        while heap and heap[0][0] <= curr_time:
+            avail.append(heapq.heappop(heap))
+
+        if not avail:
+            if heap:
+                curr_time = heap[0][0]
+                continue
+            else:
+                break
+
+        # Choose toy with minimum waiting time
+        avail.sort(key=lambda x: x[1])
+
+        chosen = avail[0]
+
+        # Push remaining toys back
+        for shop in avail[1:]:
+            heapq.heappush(heap, shop)
+
+        count += 1
+
+        next_available = curr_time + chosen[1]
+        heapq.heappush(heap, (next_available, chosen[1]))
+
+        curr_time += 1
+
+    return count
